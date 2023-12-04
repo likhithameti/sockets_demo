@@ -1,0 +1,27 @@
+Projects in this application
+---------------------------
+
+Live Visitors - Application contains live visitors tab where we can see all the users who are using the application in realtime.
+
+Online Chat Room - This is the global chat where everyone can join and others can see the messages. We can see users list who have joined.
+
+Chat Rooms - This is individual rooms where we can join any room and only those users can see the messages.
+
+Notes
+----------
+ socket.on("new_visitor", (user) =>{
+        console.log("New visitor", user);
+        socket.user = user; // current user information binding
+        io.emit("visitors", getAllVisitors());
+    })
+
+Here in the frontend we emit the new_visitor event which is listened by the backend
+    const user = "John Doe";
+    socket.emit("new_visitor", user);
+
+Now, in the backend we process things and emit the visitors event. Frontend need to listen to the events
+    socket.on("visitors", (visitors) => {
+        console.log("List of visitors:", visitors);
+    });
+
+io refers to the global Socket.IO server instance. When you emit an event using io.emit(), the event is broadcasted to all connected sockets (clients).
