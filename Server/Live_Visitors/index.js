@@ -1,12 +1,15 @@
 var express = require('express');
 var app = express();
 var http = require("http").Server(app);
-var io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+    cors: {
+      origin: 'http://localhost:3000', // Replace with your React app's URL
+      methods: ['GET', 'POST'],
+    },
+  });
+  
 const port = 4200;
 
-app.get("/", (req,res,next)=>{
-    res.sendFile(__dirname+"/index.html");
-})
 
 const connectedClients = []
 
