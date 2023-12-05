@@ -39,16 +39,26 @@ function LiveVisitors() {
     return (
         <>
             {visitors.length > 0 ? (
-            <div>
+                <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+                    <thead>
+                        <tr style={{ borderBottom: '1px solid #ddd' }}>
+                            <th style={{ padding: '8px', textAlign: 'left' }}>IpAddress</th>
+                            <th style={{ padding: '8px', textAlign: 'left' }}>RegionName</th>
+                            <th style={{ padding: '8px', textAlign: 'left' }}>City</th>
+                        </tr>
+                    </thead>
+                <tbody>
                 {visitors.map((visitor, index) => (
-                    <div key={index}>
-                        <p>IpAddress: {visitor.ipAddress} </p>
-                        <p>RegionName: {visitor.regionName} </p>
-                        <p>City: {visitor.city} </p>
-                    </div>
+                    <tr key={index} style={{ borderBottom: '1px solid #ddd' }}>
+                        <td style={{ padding: '8px', textAlign: 'left' }}>{visitor.ipAddress}</td>
+                        <td style={{ padding: '8px', textAlign: 'left' }}>{visitor.regionName}</td>
+                        <td style={{ padding: '8px', textAlign: 'left' }}>{visitor.city}</td>
+                    </tr>
                 ))}
-            </div>) : (
-                <p>No one connected</p>
+                </tbody>
+            </table>
+            ) : (
+            <p>No one connected</p>
             )}
         </>
     );

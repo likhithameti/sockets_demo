@@ -9,6 +9,18 @@ Chat Rooms - This is individual rooms where we can join any room and only those 
 
 Notes
 ----------
+io variable:
+
+It is an instance of the Socket.IO server.
+It manages the overall communication between the server and all connected clients.
+It handles events that are broadcasted to all connected clients.
+
+socket variable:
+
+It represents an individual client connection to the server.
+It allows communication between the server and a specific client.
+It handles events that are specific to a particular client.
+
  socket.on("new_visitor", (user) =>{
         console.log("New visitor", user);
         socket.user = user; // current user information binding

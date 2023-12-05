@@ -25,7 +25,7 @@ io.on("connection", (socket)=>{
 
     // Emit the initial list of visitors when a new user connects (emitted to person who is newly connected, not for all)
     // Once emitted, client read it and then its done.
-    socket.emit("visitors", getAllVisitors());
+    // socket.emit("visitors", getAllVisitors()); // it is done in useEffect in our case so no need
 
     // Listening to new event - New Visitors
     socket.on("new_visitor", (user) =>{
